@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="/image/whatsapp.png" type="image/x-icon">
+        <title>Whatsapp Backup</title>
+    </head>
+
+    <body class="min-w">
+        <header class="min-w"></header>
+        <main>
+            <div class="wpp min-w">
+                <div class="conversas min-w">
+                    <div class="titulo">
+                        <h2><i class="fa fa-comments" aria-hidden="true"></i> Backups</h2>
+                        <form action="/logout" method="GET">
+                            <button class="btn-styled log-out" type="submit">Logout</button>
+                        </form>
+                    </div>
+                    <div class="pesquisa">
+                        <div class="lupa">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                        <div class="search">
+                            <input type="search" name="pesquisa" id="pesquisa-c" placeholder="Pesquisar conversa">
+                        </div>
+                    </div>
+                    <div class="tema">
+                        <button class="btn-styled ativo light fa fa-sun-o c-pointer" value="light"></button>
+                        <button class="btn-styled dark fa fa-moon-o c-pointer" value="dark"></button>
+                    </div>
+                    <div class="lista-chat">
+                        <% if (conversas.length > 0) { %>
+                            <% conversas.forEach (conversa => { %>
+                                <form class="chat c-pointer" action="/" method="POST">
+                                    <div class="grupo">
+                                        <div class="icon">
+                                            <!-- <img src="/image/yuri.jpeg" alt=""> -->
+                                            <i class="fa fa-users" aria-hidden="true"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="nome"><%= conversa.nome %></h3>
+                                            <p class="lastmsg"><%= conversa.lastMsg.replace('<br>','').slice(0,20) %>...</p>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="editar-excluir grupo editIcon">
+                                        <i class="editar-excluir fa fa-cog" aria-hidden="true"></i>
+                                        <button style="display: none;" class="btnEdit" value=<%= conversa._id %> ></button>
+                                    </div>
+                                    <button class="envConversa" type="submit" value=<%= conversa._id %> ></button>
+                                </form>
+                            <% }) %>
+                        <% }  
+                        else { %>
+                            <form class="chat c-pointer">
+                                <div>
+                                    <p>Não há conversas carregadas</p>
+                                </div>
+                            </form>
+                        <% } %>
+                    </div>
+                    <div class="chat envDoc">
+                        <form class="addTxt" action="/send" method="POST" autocomplete="off">
+                            <label class="c-pointer" for="inputBackup">
+                                <div class="btn-mais">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div>
+                                    <p>Carregar arquivo de backup em formato .txt</p>
+                                </div>
+                            </label>
+                            <input accept=".txt" type="file" name="backup" id="inputBackup" style="display: none">
+                            <div id="btn-submit" class="d-none">
+                                <div class="nomeConversa">
+                                    <input id="nomearConversa" class="nomearConversa" type="text" name="nomearConversa" placeholder="Nome da conversa...">
+                                </div>
+                                <button class="btn-styled confirmar c-pointer" id="confirmar" type="submit" value="load">Confirmar</button>
+                                <button class="btn-styled cancelar c-pointer" id="cancelar" type="reset" value="cancel">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="conteudo" class="conteudo">
+                    <div class="front">
+                        <img src="/image/ImgBackup.png" alt="" srcset="">
+                        <div class="front-txt">
+                            <h1>Faça o backup das suas conversas</h1>
+                            <p>Exporte as suas conversas, envie o arquivo de texto gerado e suas mensagens serão carregadas.</p>
+                        </div>
+                        <div class="front-txt">
+                            <p>Arraste aqui o seu arquivo para carregá-lo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="opcoesChat" class="xEdit opcoesChat d-none min-w">
+            <form id="groupEdit" class="groupEdit min-w" action="/editar" autocomplete="off">
+                <div class="xEdit " id="fecharEdit">
+                    <span class="xEdit"></span>
+                    <span class="xEdit"></span>
+                </div>
+                <div>
+                    <h1>Editar Conversa</h1>
+                </div>
+                <div class="grupo-icon">
+                    <!-- <img src="" alt="Ícone do Grupo" srcset=""> -->
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <i class="fa fa-camera" aria-hidden="true"></i>
+                </div>
+                <div class="grupo-nome">
+                    <label for="nome"><i class="fa fa-pencil" aria-hidden="true"></i></label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+                <div>
+                    <button id="confirmChange" class="btn-styled confirmar" type="submit">Salvar Alterações</button>
+                    <button id="delChat" class="btn-styled cancelar" type="submit">Excluir Conversa</button>
+                </div>
+            </form>
+        </div>
+
+        <% if (error_msg.length > 0) { %>
+            <div class="erro">
+                <p><%= error_msg %></p>
+                <div class="x">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        <% }%>
+        <% if (error.length > 0) { %>
+            <div class="erro">
+                <p><%= error %></p>
+                <div class="x">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        <% }%>
+        <% if (success_msg.length > 0) { %>
+            <div class="sucesso">
+                <p><%= success_msg %></p>
+                <div class="x">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        <% }%>
+        <footer class="min-w">
+            <div class="copy">&copy; YURI DIAS PEREIRA. TODOS OS DIREITOS RESERVADOS.</div>
+        </footer>
+        <script src="script.js"></script>
+
+    </body>
+
+</html>

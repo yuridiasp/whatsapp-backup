@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="style-login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/image/whatsapp.png" type="image/x-icon">
+    <title>Whatsapp Backup</title>
+</head>
+
+<body>
+    <main>
+        <div class="center">
+            <div class="imagens">
+                <div class="z-1 animate-fade">
+                    <img src="image/Foto1.png" alt="Yuri">
+                </div>
+                <span class="gap"></span>
+                <div class="z-1 animate-fade">
+                    <img src="image/Foto2.png" alt="Poliana">
+                </div>
+            </div>
+            <div class="login">
+                <form action="/" method="POST" autocomplete="off">
+                    <div>
+                        <h1>LOGIN</h1>
+                    </div>
+                    <div class="grupo">
+                        <label for="login">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </label>
+                        <div class="inputlog">
+                            <input class="klogin" type="text" name="login" id="login" placeholder="Login" required>
+                        </div>
+                    </div>
+                    <div class="grupo">
+                        <label for="senha">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                        </label>
+                        <div>
+                            <input class="klogin" type="password" name="senha" id="senha" placeholder="Senha" required>
+                        </div>
+                    </div>
+                    <button class="btn-login" type="submit">Login</button>
+                </form>
+                <% if (error_msg.length > 0) { %>
+                    <div class="erro">
+                        <p><%= error_msg %></p>
+                        <div class="x">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                <% }%>
+                <% if (error.length > 0) { %>
+                    <div class="erro">
+                        <p><%= error %></p>
+                        <div class="x">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                <% }%>
+                <% if (success_msg.length > 0) { %>
+                    <div class="sucesso">
+                        <p><%= success_msg %></p>
+                        <div class="x">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                <% }%>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="copy">&copy; YURI DIAS PEREIRA. TODOS OS DIREITOS RESERVADOS.</div>
+    </footer>
+    <script src="script-login.js"></script>
+</body>
+</html>

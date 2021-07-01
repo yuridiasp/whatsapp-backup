@@ -1,0 +1,299 @@
+@media (max-width: 576px) {
+    footer {
+        font-size: 0.5em;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    footer {
+        font-size: 0.8em;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    footer {
+        font-size: 0.8em;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    footer {
+        font-size: 1em;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    footer {
+        font-size: 1em;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+::-webkit-input-placeholder {
+    color: white;
+}
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    color: white;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: white;  
+ }
+ 
+ :-ms-input-placeholder {  
+    color: white;  
+ }
+
+body {
+    background: #162226;
+}
+
+main {
+    position: relative;
+}
+
+.center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #162226;
+    background: rgb(223, 223, 223);
+    width: 20vw;
+    height: 60vh;
+    min-width: 300px;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.imagens {
+    position: absolute;
+    display: flex;
+}
+
+.gap {
+    width: 20vw;
+}
+
+img {
+    height: 500px;
+    opacity: 0.5;
+    border-radius: 10px;
+}
+
+footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #162226;
+    background: #45626A;
+    height: 20px;
+    width: 100%;
+    align-items: center;
+    bottom: 0;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.login div {
+    margin-bottom: 10px;
+}
+
+.login i {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    background: #162226;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 50px;
+}
+
+.grupo {
+    display: flex;
+    justify-content: center;
+}
+
+.klogin {
+    border: none;
+    background: #162226;
+    color: white;
+    padding: 0 10px;
+    height: 30px;
+    width: 100%;
+}
+
+.btn-login {
+    color: white;
+    border: none;
+    background: #162226;
+    border-radius: 10px;
+    padding: 0 50px;
+    height: 30px;
+    width: 40%;
+}
+
+.erro, .sucesso {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.x span {
+    position: absolute;
+    height: 2px;
+    width: 15px;
+    border-radius: 2px;
+}
+
+.x span:nth-child(1) {
+    transform: rotateZ(45deg);
+}
+
+.x span:nth-child(2) {
+    transform: rotateZ(-45deg);
+}
+
+.erro {
+    color: crimson;
+    background: rgba(220, 20, 60, 0.301);
+}
+
+.erro .x span {
+    background: crimson;
+}
+
+.sucesso {
+    color: seagreen;
+    background: rgba(46, 139, 86, 0.349);
+}
+
+.sucesso .x span {
+    background: seagreen;
+}
+
+@keyframes upper-fade {
+    
+    from {
+        transform: translateY(35%);
+        opacity: 0;
+    }
+    
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes small-fade {
+    from {
+        transform: scale(100%);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+.z-1{
+    position: relative;
+    z-index: -1;
+}
+
+.z-2 {
+    position: relative;
+    z-index: -2;
+}
+
+.animate-up {
+    animation: 500ms upper-fade;
+    animation-delay: 250ms;
+    animation-fill-mode: backwards;
+}
+
+.animate-small {
+    animation: 500ms small-fade;
+    animation-fill-mode: forwards;
+}
+
+.animate-fade {
+    animation: 500ms fade;
+    animation-delay: 550ms;
+    animation-fill-mode: backwards;
+}
+
+.animate-upReturn {
+    animation: 500ms down-fade;
+    animation-fill-mode: forwards;
+}
